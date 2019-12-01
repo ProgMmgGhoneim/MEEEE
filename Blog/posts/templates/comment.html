@@ -1,0 +1,41 @@
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+<div class="pt-5">
+  <h3 class="mb-5">{{post.comment_set.all|length}} Comments</h3>
+  <ul class="comment-list">
+ {% for comment in post.comment_set.all %}
+    <li class="comment">
+      <div class="vcard">
+        <img src="{% static 'image/person_1.jpg' %}"  alt="Image placeholder">
+      </div>
+      <div class="comment-body">
+        <h3>{{comment.user}}</h3>
+        <div class="meta">{{comment.timestamp}}</div>
+        <p> {{comment.txt}}</p>
+        <a href="{% url 'comment_update' post.id %}" class="reply rounded">Edit</a>
+        <a href="#" class="reply rounded">Delete</a>
+
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+  <!-- END comment-list -->
+  <div class="pt-5">
+    <div class="comment-form-wrap pt-5">
+      <h3 ">Leave a comment</h3>
+      <form method="post" class="">
+        {% csrf_token%}
+        <div class="form-row">
+          <div class="">
+            {{ form }}
+          </div>
+          <div class="">
+            <input type="submit" value="Post Comment" class="btn btn-primary">
+          </div>
+          <br>
+          <br>
+       </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+{% block content %}
+<p> Are you sure you want to delete post with title {{object}} ?</p>
+<form method="post">
+{% csrf_token %}
+<button  name="delete"> delete</button>
+</form>
+{% endblock%}

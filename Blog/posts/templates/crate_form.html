@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+<h5 class="display-5 text-primary">Create Post</h5>
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {% for field in form %}
+                {{ field.label_tag }}
+                {% render_field field class="form-control" %}
+            {% endfor %}
+        </div>
+        <a href="{%url 'category_create'%}" target="_top">
+          <span class="glyphicon glyphicon-plus"> Add category</span>
+        </a>
+        <br><br>
+        <button type="submit" class="btn btn-outline-primary btn-block">Add post</button>
+<br>
+
+
+    </form>
+    </div>
+
+{% endblock%}

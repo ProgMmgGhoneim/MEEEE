@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block content%}
+<div class="col-md-12 col-lg-8 main-content">
+
+  <img src="{{post.image.url}}" alt="Image" class="img-fluid mb-5">
+   <div class="post-meta">
+              <span class="author mr-2"><img src="{% static 'image/person_1.jpg'%}" alt="Colorlib" class="mr-2"> {{post.user}}</span>&bullet;
+              <span class="mr-2">{{post.timestamp}} </span> &bullet;
+              <span class="ml-2"><span class="fa fa-comments"></span>  </span>
+              <span class="ml-2"><span class="fa fa-eye"></span>{{post.num_viwes}}</span>
+            </div>
+  <h1 class="mb-4">{{post.title}}</h1>
+  {% for c in post.category.all %}
+    <a class="category mb-5" href="#">{{c}}</a>
+  {% endfor%}
+
+
+  <div class="post-content-body">
+    <p>{{post.content}}</p>
+   <div class="row mb-5">
+
+  </div>
+  <p>{{post.summary}}</p>
+  </div>
+
+
+  <div class="pt-2">
+    <p> Categories:
+    {% for c in post.category.all %}
+      <a  href="#">{{c}}</a>
+    {% endfor%}
+    </p>
+  </div>
+<br>
+<div class="comment-body">
+  <a href="{% url 'post_update' post.id%}" class="reply rounded">Update</a>
+  <a href="{% url 'post_delete' post.id%}" class="reply rounded">Delete</a>
+</div>
+
+{% include 'comment.html'%}
+</div>
+
+
+{% endblock%}
+
+
+{% block popular_post%}
+{% for p in postlist %}
+<li>
+  <a href="{% url 'post_detail' p.pk%}">
+    <img src="{{ p.image.url}}" alt="Image placeholder" class="mr-4">
+    <div class="text">
+      <h4>{{p.title}}</h4>
+      <div class="post-meta">
+        <span class="mr-2">{{p.timestamp}}</span>
+      </div>
+    </div>
+  </a>
+</li>
+{%endfor%}
+{% endblock %}
+{% block tag%}
+{% for p in categorylist %}
+<ul class="tags">
+  <li><a >{{p}}</a></li>
+</ul>
+{%endfor%}
+{% endblock %}

@@ -1,0 +1,159 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block titile %}
+      {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static '/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div class="wrap">
+    {% include 'header.html'%}
+
+    {% if messages %}
+      {% for m in messages%}
+        <div class="alert alert- {{m.tags}}">
+          {{m}}
+        </div>
+      {% endfor %}
+    {% endif%}
+    <!-- home_slider -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme home-slider">
+            {% block imageslider %}
+            {% endblock %}
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- END home_slider -->
+
+
+    <section class="site-section py-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h2 class="mb-4" style="margin-top: 1.2rem;">{%block head%} {% endblock%}</h2>
+          </div>
+        </div>
+
+        <div class="row blog-entries">
+          <div class="col-md-12 col-lg-8 main-content">
+            <div class="row">
+              <!-- main_content -->
+              {% block content %}
+
+              {% endblock %}
+            </div>
+
+
+
+            {% block pagination %}
+
+            {% endblock %}
+
+    </div>
+    <!-- End of main content -->
+
+
+
+    <!-- search -->
+    <div class="col-md-12 col-lg-4 sidebar">
+
+      <!-- End of sidebar-box -->
+
+
+      <!-- bio -->
+      <div class="sidebar-box">
+        <div class="bio text-center">
+          <img src="{% static 'image/IMG_20180403_173041.jpg'%}" alt="Image Placeholder" class="img-fluid">
+          <div class="bio-body">
+            <h2>Mustafa Ghoneim</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
+            <p><a href="#" class="btn btn-primary btn-sm rounded">Read my bio</a></p>
+            <p class="social">
+              <a href="https://www.facebook.com/mustafa.gohniem.1" class="p-2"><span class="fa fa-facebook"></span></a>
+              <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+              <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+              <a href="https://www.youtube.com/channel/UCixOJLuMXdVRSB4Ow3VJEDg?view_as=subscriber" class="p-2"><span class="fa fa-youtube-play"></span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- popular post -->
+      <div class="sidebar-box">
+        <h3 class="heading">Popular Posts</h3>
+        <div class="post-entry-sidebar">
+          <ul>
+            {% block popular_post%}
+
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+      <!-- END sidebar-box -->
+
+      <!-- tags -->
+      <div class="sidebar-box">
+        <h3 class="heading">Tags</h3>
+        {% block tag%}
+
+        {% endblock %}
+        
+      </div>
+    </div>
+    <!-- END sidebar -->
+    </div>
+    </div>
+    </section>
+
+    <!-- End of section -->
+
+
+    {% include 'footer.html'%}
+
+
+
+
+  </div>
+
+
+  <script>
+        document.querySelector(".django-ckeditor-widget").removeAttribute('style');
+    </script>
+    <script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+
+
+    <script src="{% static 'js/main.js'%}"></script>
+  </body>
+</html>

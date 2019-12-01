@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+{% block content %}
+  <form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" name="" class ='btn btn-primary btn-block ' value="ADD">
+  </form>
+{% endblock%}
